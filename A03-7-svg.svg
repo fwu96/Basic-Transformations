@@ -1,0 +1,94 @@
+<!-- here is a big, empty SVG! make it into something interesting! -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="600px" width="600px">    
+   
+    <!-- The shape of half of the pic that I want to draw -->
+    <defs>
+        <!-- The half of the main body of the logo
+             including the curves and the black at the middle -->
+        <g id="logoA_half">
+            <path d="M300 150 L420 150 L380 240 Q500 240 470 190 
+                     Q550 270 360 300 Q330 450 420 390 
+                     C490 360 280 580 320 300 L300 300 Z"
+                     fill="#F06292" fill-opacity="0.8"/>
+            <polygon points="300 190, 360 190, 340 240, 300 240" 
+                fill="white"/>
+        </g>
+        <!-- Draw the half shape of the diamond -->
+        <g id="diamond_side">
+            <g id="diamond_main_body">
+                <path d="M510 500 L520 500 L528 506 
+                         L510 530 Z"/>
+            </g>
+            <!-- All some lines on the diamond "surface" 
+                 to make it looks more real -->
+            <g id="diamond_edges">
+                <path d="M528 506  L510 506 M520 500 L522 506 
+                         L519 518 M510 500 L522 506 M515 500 
+                         L510 506 M513.75 501.5 L516 506 
+                         L510 530 M513 518 L522 506 M513 518 
+                         L510 506 Z"/>
+            </g>
+            <!-- A creating symbol composed by for separate shape -->
+            <g id="center_symbol">
+                <path d="M300 440 Q310 434 300 460 Z"/>
+                <path d="M300 463 A3 3 0 0 1 300 469 Z"/>
+                <path d="M300 478 A6.5 6.5 0 0 1 300 491 Z"/>
+                <path d="M300 500 A3 3 0 0 1 300 506 Z"/>
+                <path d="M300 509 Q310 537 300 529 Z"/>
+            </g>
+        </g>
+        <!-- Add some features on the diamond shape -->
+        <g id="draw_diamond">
+            <use xlink:href="#diamond_main_body" fill="#F06292" stroke="none"/>
+            <use xlink:href="#diamond_edges" fill="none"
+                stroke="white" stroke-width="0.8"/>
+        </g>
+        <!-- Drawing a whole diamond by using the "draw_diamond" group -->
+        <g id="whole_diamond">
+            <use xlink:href="#draw_diamond"/>
+            <g transform="scale(-1, 1) translate(-1020, 0)">
+                <use xlink:href="#draw_diamond"/>
+            </g>
+        </g>
+        <!-- Drawing the complete creative symbol -->
+        <g id="draw_symbol" fill="#F06292" stroke="none">
+            <use xlink:href="#center_symbol"/>
+            <use xlink:href="#center_symbol" transform="scale(-1, 1) translate(-600, 0)"/>
+        </g>
+    </defs>
+    <!-- Use the "logoA_half" group and make it symmetric around the center
+         to draw the complete logo -->
+    <use xlink:href="#logoA_half"/>
+    <use xlink:href="#logoA_half" transform="scale(-1, 1) translate(-600, 0)"/>
+    <!-- Using hierarchies to draw four diamonds to the wanted position -->
+    <g transform="rotate(90, 515 515)">
+        <g transform="translate(70, -60)">
+            <use xlink:href="#whole_diamond"/>
+            <g transform="translate(-560, 0)">
+                <use xlink:href="#whole_diamond"/>
+                <g transform="translate(0, 540) rotate(180, 510 520)">
+                    <use xlink:href="#whole_diamond"/>
+                    <g transform="translate(-560, 0)">
+                        <use xlink:href="#whole_diamond"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <!-- Using hierarchies again to draw four symbols to desired position -->
+    <g transform="rotate(90, 303.25 484.5)">
+        <g transform="translate(100, -200)">
+            <use xlink:href="#draw_symbol"/>
+            <g transform="translate(-560, 0)">
+                <use xlink:href="#draw_symbol"/>
+                <g transform="translate(0, 400)">
+                    <use xlink:href="#draw_symbol"/>
+                    <g transform="translate(560, 0)">
+                        <use xlink:href="#draw_symbol"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+
